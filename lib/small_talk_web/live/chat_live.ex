@@ -63,12 +63,10 @@ defmodule SmallTalkWeb.ChatLive do
 
   @impl true
   def render(assigns) do
-    IO.inspect(assigns, label: "render")
-
     ~H"""
-    <div class="w-full h-screen flex flex-col max-w-lg mx-auto">
+    <div class="w-full h-screen flex items-center flex-col max-w-lg mx-auto">
       <div class="p-4 border-b">
-        <h1 class="text-2xl font-bold">Elixir/Phoenix Chat!</h1>
+        <h1 class="text-2xl font-bold">Small Talk</h1>
       </div>
 
       <%= if @current_user do %>
@@ -89,12 +87,13 @@ defmodule SmallTalkWeb.ChatLive do
     </div>
     <div class="p-4 border-t">
       <form phx-submit="send_message" class="flex items-center">
+        <span class="text-3xl">{@current_user.emoji}</span>
         <input
           id="message-body"
           type="text"
           name="body"
-          class="input input-bordered flex-1 mr-2"
-          placeholder="Type a message..."
+          class="input input-bordered flex-1 ml-2 mr-2"
+          placeholder="我想說的話…"
           autocomplete="off"
           phx-autofocus
           phx-hook="ClearInput"
